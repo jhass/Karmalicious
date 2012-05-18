@@ -1,2 +1,2 @@
-bot: ruby bot.rb
-web: ruby web.rb
+bot: bundle exec ruby bot.rb
+web: bundle exec ruby web.rb

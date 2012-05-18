@@ -65,7 +65,7 @@ bot = Cinch::Bot.new do
     end
   end
   
-  on :message, /^#{bot.nick}(?:\:|,|\s+)(?:about|help|who a?re? (yo)?u|shut (the)? (fuck)? up|stfu|hello|hi|welcome|go( away)?|leave|part|join|come( to)?|site|website|page|webpage|info|man).*/ do |m|
+  on :message, /^#{config.nick}(?:\:|,|\s+)\s*(?:about|help|who a?re? (yo)?u|shut (the)? (fuck)? up|stfu|hello|hi|welcome|go( away)?|leave|part|join|come( to)?|site|website|page|webpage|info|man).*/ do |m|
     m.reply "Hi, I'm Karmalicious, I keep track of your karma. If you want to know more about me visit http://karmalicious.mrzyx.de"
   end
 end

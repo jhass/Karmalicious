@@ -7,3 +7,14 @@
     %h1 Karmalicious
     %div#main
       = yield
+
+
+    / Piwik
+    %script{:type => "text/javascript", :src => "#{request.scheme}stats.mrzyx.de/piwik.js"}
+      :javascript
+         try {
+           var piwikTracker = Piwik.getTracker("#{request.scheme}m/piwik/piwik.php", 9);
+           piwikTracker.trackPageView();
+           piwikTracker.enableLinkTracking();
+         } catch( err ) {}
+    / End Piwik Tag
