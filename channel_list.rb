@@ -17,7 +17,12 @@ class ChannelList
     end
     alias_method :part, :rm
     alias_method :delete, :rm
-    
+
+    def reload!
+      list.reload!
+      self
+    end    
+
     def list
       @@list ||= self.new
     end
@@ -26,9 +31,14 @@ class ChannelList
   
   def initialize
     self.store! unless File.exists?('channels.yml')
-    @channels = YAML.load_file "channels.yml"
+    load!
   end
   
+  def load!
+    @channels = YAML.load_file "channels.yml"
+  end
+  alias_method :reload!, :load!
+
   def store!
     open('channels.yml', 'w') do |f|
       f.write YAML.dump @channels || []

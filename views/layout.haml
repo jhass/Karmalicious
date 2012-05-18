@@ -10,7 +10,7 @@
 
 
     / Piwik
-    %script{:type => "text/javascript", :src => "#{request.scheme}stats.mrzyx.de/piwik.js"}
+    %script{:type => "text/javascript", :src => "#{request.scheme}://stats.mrzyx.de/piwik.js"}
       :javascript
          try {
            var piwikTracker = Piwik.getTracker("#{request.scheme}m/piwik/piwik.php", 9);

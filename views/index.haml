@@ -53,4 +53,4 @@
   %a{name: 'channels'} Channels
 %p
   I'm currently in the following channels:
-  = ChannelList.to_a.join(",")
+  = ChannelList.reload!.to_a.join(",")
