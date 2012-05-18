@@ -5,34 +5,7 @@ require 'cinch'
 require './db'
 
 class Cinch::User
-  def karma
-    Karma.filter(to: self.nick).sum(:value) || 0
-  end
-
-  def add_karma(val, from)
-    Karma.create(to: self.nick, from: from.nick, value: val)
-  end
-
-  def increase_karma_of(user)
-    user.karma_can_be_modified_by?(self) && user.add_karma(self.karma_influence, self)
-  end
-  
-  def decrease_karma_of(user)
-    user = user
-    user.karma_can_be_modified_by?(self) && user.add_karma(-self.karma_influence, self)
-  end
-  
-  def karma_influence
-    1+self.karma*0.25
-  end
-  
-  def karma_string
-    "#{self.nick} has a karma of #{self.karma}"
-  end
-  
-  def karma_can_be_modified_by?(user)
-    !(self.nick == user.nick || Karma.first('`from` = ? AND created_at > ?', user.nick, Time.now-5*60))
-  end
+  include UserMethods
 end
 
 bot = Cinch::Bot.new do
@@ -68,7 +41,7 @@ bot = Cinch::Bot.new do
   end
 end
 
-#bot.loggers.level = :info
+bot.loggers.level = :info
 DB.sql_log_level = :debug
 DB.loggers << bot.loggers.first
 bot.start
