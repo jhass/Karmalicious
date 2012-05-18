@@ -21,6 +21,15 @@ body > h1 {
   border: 1px solid #DDD;
 }
 
+#main > #nav {
+  list-style: none;
+  text-align: right;
+}
+
+#main > #nav > li {
+  display: inline;
+}
+
 #main > table {
   width: 100%;
   text-align: left;
