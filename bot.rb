@@ -3,6 +3,7 @@ require 'bundler/setup'
 require 'cinch'
 
 require './db'
+require './channel_list'
 
 class Cinch::User
   include UserMethods
@@ -10,10 +11,10 @@ end
 
 bot = Cinch::Bot.new do
   configure do |c|
-    c.nick = "MrZYXsKarmalicious"
+    c.nick = "Karmalicious"
     c.server = "chat.eu.freenode.net"
     c.port = 6667
-    c.channels = ['##debot']
+    c.channels = ChannelList.to_a
   end
   
   NICK_REGEX = /[\w\d\-_\^'´`]+/
@@ -37,6 +38,30 @@ bot = Cinch::Bot.new do
       m.reply "Bots have no karma :("
     else
       m.reply user.karma_string if user
+    end
+  end
+  
+  CHANNEL_REGEX = /#[\w\d_\-]+/
+  
+  on :message, /^!join\s+(#{CHANNEL_REGEX})/ do |m, channel|
+    if m.channel.nil?
+      synchronize(:joinpart) do
+        unless bot.channels.include?(channel)
+          ChannelList.join channel
+          bot.join channel
+        end
+      end
+    end
+  end
+  
+  on :message, /^!part\s+(#{CHANNEL_REGEX})/ do |m, channel|
+    if m.channel.nil?
+      synchronize(:joinpart) do
+        if bot.channels.include?(channel)
+          ChannelList.part channel
+          bot.part channel
+        end
+      end
     end
   end
 end

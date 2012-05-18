@@ -9,3 +9,14 @@
       %th Influence
   %tbody
     = partial :overview_entry, collection: @top50
+
+%h2 Channels
+%p
+  I'm currently in the following channels:
+  = ChannelList.to_a.join(",")
+%div
+  If you want me in your channel too say
+  %pre.inline /msg Karmalicious !join #yourchannel
+  \. If you want me out of your channel say
+  %pre.inline /msg Karmalicious !part #yourchannel
+  \.

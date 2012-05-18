@@ -3,6 +3,7 @@ require 'sinatra'
 require 'sinatra/partial'
 
 require './db'
+require './channel_list'
 
 set :haml, :format => :html5
 enable :partial_underscores

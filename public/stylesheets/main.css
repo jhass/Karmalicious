@@ -41,3 +41,8 @@ body > h1 {
   margin: 0;
   padding: 0.3em;
 }
+
+pre.inline {
+  display: inline;
+  margin: 0;
+}
