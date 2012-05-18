@@ -1,14 +1,5 @@
 %a{name: 'top'}
-
-%ul#nav
-  %li
-    %a{href: '#about'} About
-  %li
-    %a{href: '#usage'} Usage
-  %li
-    %a{href: '#top50'} Top 50
-  %li
-    %a{href: '#channels'} Channels
+= partial :index_nav
 
 %h2
   %a{name: 'about'} About
@@ -53,4 +44,6 @@
   %a{name: 'channels'} Channels
 %p
   I'm currently in the following channels:
-  = ChannelList.reload!.to_a.join(",")
+  = ChannelList.reload!.to_a.join(", ")
+
+= partial :index_nav

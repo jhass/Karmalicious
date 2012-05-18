@@ -21,18 +21,23 @@ body > h1 {
   border: 1px solid #DDD;
 }
 
-#main > #nav {
+#main > .nav {
   list-style: none;
   text-align: right;
 }
 
-#main > #nav > li {
+#main > .nav > li {
   display: inline;
 }
 
 #main > table {
-  width: 100%;
-  text-align: left;
+  text-align: right;
+  margin: auto;
+}
+
+#main > table tr > td:nth-child(2), #main > table tr > th:nth-child(2) {
+  width:50%;
+  text-align:left;
 }
 
 #main > table tr {
