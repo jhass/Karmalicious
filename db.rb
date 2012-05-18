@@ -51,7 +51,7 @@ module UserMethods
   end
   
   def karma_can_be_modified_by?(user)
-    !(self.nick == user.nick || Karma.first('`from` = ? AND created_at > ?', user.nick, Time.now-5*60))
+    !(self.nick == user.nick || Karma.first('`from` = ? AND `to` = ? AND created_at > ?', user.nick, self.nick, Time.now-5*60))
   end
 end
 
