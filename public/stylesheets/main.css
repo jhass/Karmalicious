@@ -29,9 +29,13 @@ h2 > a {
   border: 1px solid #61C700;
 }
 
-#main > .nav {
+#main > ul.nav {
   list-style: none;
   text-align: right;
+}
+
+#main > a.nav {
+  float: right;
 }
 
 #main > .nav > li {

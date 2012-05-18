@@ -75,7 +75,7 @@ class User
   alias_method :karma, :cached_karma
   
   def total_karma_given
-    Karma.filter(from: self.nick).sum(:value) || 0
+    (Karma.filter(from: self.nick).sum(:value) || 0).round(2)
   end
   
   def positive_karma
@@ -83,11 +83,11 @@ class User
   end
   
   def positive_karma_given
-    self.positive_karma.sum(:value) || 0
+    (self.positive_karma.sum(:value) || 0).round(2)
   end
   
   def positive_karma_count
-    self.positive_karma.count || 0
+    (self.positive_karma.count || 0).round(2)
   end
   
   def negative_karma
@@ -95,10 +95,10 @@ class User
   end
   
   def negative_karma_given
-    self.negative_karma.sum(:value) || 0
+    (self.negative_karma.sum(:value) || 0).round(2)
   end
   
   def negative_karma_count
-    self.negative_karma.count || 0
+    (self.negative_karma.count || 0).round(2)
   end
 end
