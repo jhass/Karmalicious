@@ -1,16 +1,8 @@
 # encoding: utf-8
+require 'bundler/setup'
 require 'cinch'
-require 'sqlite3'
-require 'sequel'
 
-DB = Sequel.connect('sqlite://karma.db')
-
-class Karma < Sequel::Model
-  def before_create
-    self.created_at ||= Time.now
-    super
-  end
-end
+require './db'
 
 class Cinch::User
   def karma
@@ -76,5 +68,7 @@ bot = Cinch::Bot.new do
   end
 end
 
-bot.loggers.level = :info
+#bot.loggers.level = :info
+DB.sql_log_level = :debug
+DB.loggers << bot.loggers.first
 bot.start

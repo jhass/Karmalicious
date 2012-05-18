@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body > h1 {
+  background-color: #EEE;
+  padding: 0.2em;
+  margin:0;
+  border-bottom: 1px solid #DDD;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+#main {
+  width: 70%;
+  margin: 5em auto 0 auto;
+  background-color: #EEE;
+  padding: 0.5em;
+  border: 1px solid #DDD;
+}
+
+#main > table {
+  width: 100%;
+  text-align: left;
+}
+
+#main > table tr {
+  margin: 0;
+  padding: 0;
+}
+
+#main > table > tbody tr:hover {
+  background-color: white;
+}
+
+
+#main > table td, #main > table th {
+  border-bottom: 1px solid black;
+  margin: 0;
+  padding: 0.3em;
+}

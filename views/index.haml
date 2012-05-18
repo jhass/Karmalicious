@@ -1,0 +1,9 @@
+%h2 Top 50
+%table
+  %thead
+    %tr
+      %th Place
+      %th Nick
+      %th Karma
+  %tbody
+    = partial :overview_entry, collection: @top50
