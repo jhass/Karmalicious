@@ -10,6 +10,10 @@ class Karma < Sequel::Model
     super
   end
   
+  def value
+    self[:value].round(2)
+  end
+  
   def receiver
     @receiver ||= User.new self.to, self.value
   end
@@ -69,4 +73,32 @@ class User
     @karma ||= query_karma
   end
   alias_method :karma, :cached_karma
+  
+  def total_karma_given
+    Karma.filter(from: self.nick).sum(:value) || 0
+  end
+  
+  def positive_karma
+    Karma.filter('`from` = ? AND value > 0', self.nick)
+  end
+  
+  def positive_karma_given
+    self.positive_karma.sum(:value) || 0
+  end
+  
+  def positive_karma_count
+    self.positive_karma.count || 0
+  end
+  
+  def negative_karma
+    Karma.filter('`from` = ? AND value < 0', self.nick)
+  end
+  
+  def negative_karma_given
+    self.negative_karma.sum(:value) || 0
+  end
+  
+  def negative_karma_count
+    self.negative_karma.count || 0
+  end
 end

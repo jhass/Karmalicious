@@ -20,3 +20,14 @@ get '/' do
   puts @top50
   haml :index
 end
+
+
+get /\/u\/(.+)/ do |user|
+  @user = User.new user
+  @received_karma = Karma.filter(to: user).all
+  redirect '/' if @received_karma.empty?
+  @received_karma.map! {|k| [k.sender, k.value]}
+  @send_karma = Karma.filter(from: user).all
+  @send_karma.map! {|k| [k.receiver, k.value]}
+  haml :show
+end

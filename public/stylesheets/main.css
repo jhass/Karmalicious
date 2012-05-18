@@ -7,18 +7,26 @@ body > h1 {
   background-color: #EEE;
   padding: 0.2em;
   margin:0;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid #61C700;
   position: fixed;
   width: 100%;
   top: 0;
+}
+
+a {
+  color: #0061C7;
+}
+
+h2 > a {
+  color: black;
 }
 
 #main {
   width: 70%;
   margin: 5em auto 0 auto;
   background-color: #EEE;
-  padding: 0.5em;
-  border: 1px solid #DDD;
+  padding: 1.5em;
+  border: 1px solid #61C700;
 }
 
 #main > .nav {
@@ -51,7 +59,7 @@ body > h1 {
 
 
 #main > table td, #main > table th {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #61C700;
   margin: 0;
   padding: 0.3em;
 }
@@ -59,4 +67,8 @@ body > h1 {
 pre.inline {
   display: inline;
   margin: 0;
+}
+
+#main > table.show_table {
+  margin: 1em;
 }

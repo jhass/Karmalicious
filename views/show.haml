@@ -1,0 +1,29 @@
+%h2=@user.nick
+%ul
+  %li== Karma: #{@user.karma}
+  %li== Level: #{@user.karma_level}
+  %li== Influence: #{@user.karma_influence}
+  %li
+    == Total karma given: #{@user.total_karma_given}
+    %ul
+      %li== Positive karma given: #{@user.positive_karma_given} (#{@user.positive_karma_count} times)
+      %li== Negative karma given: #{@user.negative_karma_given} (#{@user.negative_karma_count} times)
+
+%h3 Received karma
+%table.show_table
+  %thead
+    %tr
+      %th From
+      %th Value
+  %tbody
+    = partial :show_detail_row, collection: @received_karma
+
+- unless @send_karma.empty?
+  %h3 Send
+  %table.show_table
+    %thead
+      %tr
+        %th To
+        %th Value
+    %tbody
+      = partial :show_detail_row, collection: @send_karma
