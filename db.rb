@@ -28,17 +28,17 @@ module UserMethods
     (Karma.filter(to: self.nick).sum(:value) || 0).round(2)
   end
 
-  def add_karma(val, from)
-    Karma.create(to: self.nick, from: from.nick, value: val)
+  def add_karma(val, from, channel)
+    Karma.create(to: self.nick, from: from.nick, value: val, channel: channel)
   end
 
-  def increase_karma_of(user)
-    user.karma_can_be_modified_by?(self) && user.add_karma(self.karma_influence, self)
+  def increase_karma_of(user, channel)
+    user.karma_can_be_modified_by?(self) && user.add_karma(self.karma_influence, self, channel)
   end
   
-  def decrease_karma_of(user)
+  def decrease_karma_of(user, channel)
     user = user
-    user.karma_can_be_modified_by?(self) && user.add_karma(-self.karma_influence, self)
+    user.karma_can_be_modified_by?(self) && user.add_karma(-self.karma_influence, self, channel)
   end
   
   def karma_influence

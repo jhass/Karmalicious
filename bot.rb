@@ -25,7 +25,7 @@ bot = Cinch::Bot.new do
     method = (inc_or_dec == "++") ? :increase_karma_of : :decrease_karma_of
     user = User(nick)
     valid_user = user && user.nick != bot.nick && m.channel.has_user?(user)
-    unless valid_user && m.user.__send__(method, user)
+    unless valid_user && m.user.__send__(method, user, m.channel.name)
       m.user.send "You can't modify the karma of #{nick} because #{nick} either isn't in the channel, a bot, that's your own name or you already did in the last five minutes."
     end
   end

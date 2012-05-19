@@ -75,4 +75,10 @@ pre.inline {
 
 #main > table.show_table {
   margin: 1em;
+  text-align: left;
+}
+
+#main > table.show_table tr > td:nth-child(2), #main > table.show_table tr > th:nth-child(2) {
+  width: auto;
+  text-align: right;
 }

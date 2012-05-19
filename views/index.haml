@@ -44,6 +44,6 @@
   %a{name: 'channels'} Channels
 %p
   I'm currently in the following channels:
-  = ChannelList.reload!.to_a.join(", ")
+  = ChannelList.reload!.to_a.sort.join(", ")
 
 = partial :index_nav

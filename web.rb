@@ -24,10 +24,10 @@ end
 
 get /\/u\/(.+)/ do |user|
   @user = User.new user
-  @received_karma = Karma.filter(to: user).all
+  @received_karma = Karma.filter(to: user).order(:created_at.desc).all
   redirect '/' if @received_karma.empty?
-  @received_karma.map! {|k| [k.sender, k.value]}
-  @send_karma = Karma.filter(from: user).all
-  @send_karma.map! {|k| [k.receiver, k.value]}
+  @received_karma.map! {|k| [k.sender, k.value, k.channel, k.created_at]}
+  @send_karma = Karma.filter(from: user).order(:created_at.desc).all
+  @send_karma.map! {|k| [k.receiver, k.value, k.channel, k.created_at]}
   haml :show
 end

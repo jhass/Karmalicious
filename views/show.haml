@@ -17,6 +17,8 @@
     %tr
       %th From
       %th Value
+      %th Channel
+      %th At
   %tbody
     = partial :show_detail_row, collection: @received_karma
 
@@ -27,5 +29,7 @@
       %tr
         %th To
         %th Value
+        %th Channel
+        %th At
     %tbody
       = partial :show_detail_row, collection: @send_karma

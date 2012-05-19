@@ -1,3 +1,5 @@
 %tr
-  %td= show_detail_row.first.nick
-  %td= show_detail_row.last
+  %td= show_detail_row[0].nick
+  %td= show_detail_row[1]
+  %td= show_detail_row[2]
+  %td= show_detail_row[3].strftime("%m/%d/%Y %H:%M")
