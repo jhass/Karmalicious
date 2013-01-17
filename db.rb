@@ -50,6 +50,7 @@ module UserMethods
     (0.5+Math.log2(self.karma)).ceil
   end
   
+
   def karma_string
     "#{self.nick} has a karma of #{self.karma} (LVL: #{self.karma_level}, INF: #{self.karma_influence})"
   end
@@ -87,7 +88,7 @@ class User
   end
   
   def positive_karma_count
-    (self.positive_karma.count || 0).round(2)
+    self.positive_karma.count || 0
   end
   
   def negative_karma
@@ -99,6 +100,6 @@ class User
   end
   
   def negative_karma_count
-    (self.negative_karma.count || 0).round(2)
+    self.negative_karma.count || 0
   end
 end
