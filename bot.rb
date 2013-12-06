@@ -14,7 +14,7 @@ bot = Cinch::Bot.new do
     c.nick = "Karmalicious"
     c.realname = "karmalicious.mrzyx.de"
     c.user = "karma"
-    c.server = "chat.eu.freenode.net"
+    c.server = "barjavel.freenode.net"
     c.port = 6667
     c.channels = ChannelList.to_a
   end

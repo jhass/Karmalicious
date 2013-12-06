@@ -1,0 +1,14 @@
+[Unit]
+Description=A kind IRC bot tracking your karma
+After=network.target
+
+[Service]
+WorkingDirectory=/home/mrzyx/Karmalicious
+ExecStart=/bin/bash -lc "true; bundle exec foreman start"
+User=mrzyx
+CPUAccounting=true
+MemoryAccounting=true
+BlockIOAccounting=true
+
+[Install]
+WantedBy=multi-user.target
