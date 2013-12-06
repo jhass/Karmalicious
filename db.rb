@@ -1,5 +1,6 @@
 require 'sqlite3'
 require 'sequel'
+require 'sequel/extensions/core_extensions'
 
 DB = Sequel.connect('sqlite://karma.db')
 
