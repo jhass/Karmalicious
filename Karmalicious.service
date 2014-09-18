@@ -3,9 +3,9 @@ Description=A kind IRC bot tracking your karma
 After=network.target
 
 [Service]
-WorkingDirectory=/home/mrzyx/Karmalicious
+WorkingDirectory=/home/jhass/Karmalicious
 ExecStart=/bin/bash -lc "true; bundle exec foreman start"
-User=mrzyx
+User=jhass
 CPUAccounting=true
 MemoryAccounting=true
 BlockIOAccounting=true
