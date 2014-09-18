@@ -29,6 +29,7 @@ bot = Cinch::Bot.new do
   NICK_REGEX = /[\w\d\-_\^'´`]+/
 
   on :message, /^(#{NICK_REGEX})(\+\+|\-\-)/ do |m, nick, inc_or_dec|
+    break unless m.channel
     method = (inc_or_dec == "++") ? :increase_karma_of : :decrease_karma_of
     break if BLACKLIST.include?(nick)
     user = User(nick)
@@ -88,8 +89,8 @@ bot = Cinch::Bot.new do
     end
   end
 
-  on :message, /^#{config.nick}(?:\:|,|\s+)\s*(?:about|help|who a?re? (yo)?u|shut (the)? (fuck)? up|stfu|hello|hi|welcome|go( away)?|leave|part|join|come( to)?|site|website|page|webpage|info|man|gtfo).*/ do |m|
-    break if ChannelList[m.channel.name].silent?
+  on :message, /^#{config.nick}(?:\:|,|\s+)\s*(?:about|help|who a?re? (yo)?u|shut (the )?(fuck )?up|stfu|hello|hi|hey|o?hai|welcome|go( away)?|leave|part|join|come( to)?|site|website|page|webpage|info|man|gtfo).*/ do |m|
+    break if m.channel && ChannelList[m.channel.name].silent?
     m.reply "Hi, I'm Karmalicious, I keep track of your karma. If you want to know more about me visit http://karmalicious.mrzyx.de"
   end
 end
