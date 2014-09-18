@@ -88,7 +88,7 @@ class ChannelList
     store!
   end
 
-  def rm(chan)
+  def rm(name)
     synchronize do
       @channels.delete(self[name])
     end
