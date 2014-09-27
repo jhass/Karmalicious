@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem 'unicorn'
 gem 'sqlite3'
 gem 'sequel'
 gem 'foreman'
