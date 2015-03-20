@@ -53,7 +53,7 @@ bot = Cinch::Bot.new do
     end
   end
 
-  CHANNEL_REGEX = /#[\w\d_\-]+/
+  CHANNEL_REGEX = /#+[\w\d_\-]+/
 
   on :message, /^!join\s+(#{CHANNEL_REGEX})/ do |m, channel|
     break unless authorized?(m)
