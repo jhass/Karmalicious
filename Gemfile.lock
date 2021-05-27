@@ -11,7 +11,7 @@ GEM
     rack-protection (1.5.3)
       rack
     raindrops (0.18.0)
-    rake (12.0.0)
+    rake (12.3.3)
     sequel (4.45.0)
     sinatra (1.4.8)
       rack (~> 1.5)
