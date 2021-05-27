@@ -1,7 +1,7 @@
 Karmalicious
 ============
 
-IRC bot that tracks your karma. Find it on Freenode or set it up yourself for other networks.
+IRC bot that tracks your karma. Find it on Libera Chat or set it up yourself for other networks.
 ![Gemnasium](https://gemnasium.com/MrZYX/Karmalicious.png)
 
 ## Install
